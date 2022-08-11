@@ -1,0 +1,75 @@
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+
+Page {
+    id: page
+
+    // The effective value will be restricted by ApplicationWindow.allowedOrientations
+    allowedOrientations: Orientation.All
+
+    // To enable PullDownMenu, place our content in a SilicaFlickable
+    SilicaFlickable {
+        anchors.fill: parent
+
+        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Show Page 2")
+                onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
+            }
+        }
+
+        // Tell SilicaFlickable the height of its content.
+        contentHeight: column.height
+
+        // Place our content in a Column.  The PageHeader is always placed at the top
+        // of the page, followed by our content.
+        Column {
+            id: column
+
+            width: page.width
+            spacing: Theme.paddingLarge
+            PageHeader {
+                title: qsTr("UI Template")
+            }
+
+            Label {
+                id: label1
+                x: Theme.horizontalPageMargin
+                property int count: 1
+                text: count
+                color: Theme.secondaryHighlightColor
+                font.pixelSize: Theme.fontSizeExtraLarge
+            }
+            Button{
+                text: "add"
+
+                onClicked: {
+                    if(label1.count != 1<<30){
+                        label1.count *= 2;
+                    }
+                    /*if(label1.count * 2 >= 1073741824){
+                        label1.count*=1
+                    }
+                    else{
+                    label1.count *= 2;
+                    }*/
+
+                }
+
+            }
+            Button{
+                text: "reset"
+
+                onClicked: {
+                    label1.count = 1;
+
+
+                }
+
+
+            }
+
+        }
+    }
+}

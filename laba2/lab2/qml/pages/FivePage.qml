@@ -1,0 +1,52 @@
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+
+Page {
+    id: page
+
+    // The effective value will be restricted by ApplicationWindow.allowedOrientations
+    allowedOrientations: Orientation.All
+
+    // To enable PullDownMenu, place our content in a SilicaFlickable
+    SilicaFlickable {
+        anchors.fill: parent
+
+        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Show Page 6")
+                onClicked: pageStack.push(Qt.resolvedUrl("SixPage.qml"))
+            }
+        }
+
+        // Tell SilicaFlickable the height of its content.
+        contentHeight: column.height
+
+        // Place our content in a Column.  The PageHeader is always placed at the top
+        // of the page, followed by our content.
+
+Item{
+        Rectangle {
+             id: rectangleRed
+             x: 50
+             y: 50
+             width: 200
+             height: 200
+             color:"red"
+             Text{
+             anchors.centerIn: parent
+             text: "Квадрат"
+             color: "white"
+
+             }
+             transform: [Translate{x: 100},
+                 Scale {xScale: 1; yScale: 0.5; origin.y: 100 },
+             Rotation{angle: 45}]
+        }
+
+
+}
+
+
+    }
+}
