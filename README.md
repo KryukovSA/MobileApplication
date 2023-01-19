@@ -4,4 +4,4 @@
 
 Работы выполнялись в IDE QT creator.
 
-Код страниц приложения расположен в пакетах [qml](.laba7/laba7_1/qml/) и [src](.laba7/laba7_1/src/)
+Код страниц приложения расположен в пакетах [qml](.laba7/laba7_1/qml) и [src](.laba7/laba7_1/src)
